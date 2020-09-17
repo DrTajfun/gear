@@ -4,13 +4,13 @@
 	"name": "Gear",
 	"short_name": "SWGOH Gear collection progress",
 	"display": "minimal-ui",
-	"start_url": "/gear/",
+	"start_url": "/gear/?source=pwa",
 	"icons": [
 		{
 			"src": "logo-192.png",
 			"sizes": "192x192",
-			"type": "image/png",
-			"purpose": "any maskable"
+			"type": "image/png"
+			
 		},
 		{
 			"src": "logo-512.png",
