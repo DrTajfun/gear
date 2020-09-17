@@ -1,6 +1,5 @@
 <script>
-	import marked from 'marked';
-	let text = `Some words are *italic*, some are **bold**`;
+let m = { x: 0, y: 0 };
 </script>
 
 <style>
@@ -36,7 +35,7 @@
 		}
 	}
 
-		textarea { width: 100%; height: 200px; }
+		div { width: 100%; height: 100%; }
 </style>
 
 
@@ -55,4 +54,6 @@
 
 <p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
 
-<textarea bind:value={text}></textarea>
+<div on:mousemove="{e => m = { x: e.clientX, y: e.clientY }}">
+	The mouse position is {m.x} x {m.y}
+</div>
