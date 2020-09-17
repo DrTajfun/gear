@@ -1,12 +1,6 @@
 <script>
-	import { time, elapsed } from './stores.js';
-
-	const formatter = new Intl.DateTimeFormat('en', {
-		hour12: true,
-		hour: 'numeric',
-		minute: '2-digit',
-		second: '2-digit'
-	});
+	import marked from 'marked';
+	let text = `Some words are *italic*, some are **bold**`;
 </script>
 
 <style>
@@ -41,6 +35,8 @@
 			font-size: 4em;
 		}
 	}
+
+		textarea { width: 100%; height: 200px; }
 </style>
 
 
@@ -59,11 +55,4 @@
 
 <p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
 
-
-
-<h1>The time is {formatter.format($time)}</h1>
-
-<p>
-	This page has been open for
-	{$elapsed} {$elapsed === 1 ? 'second' : 'seconds'}
-</p>
+<textarea bind:value={text}></textarea>
