@@ -3,7 +3,7 @@
 	"theme_color": "#333333",
 	"name": "Gear",
 	"short_name": "SWGOH Gear collection progress",
-	"display": "standalone",
+	"display": "minimal-ui",
 	"start_url": "/gear/?source=pwa",
 	"icons": [
 		{
