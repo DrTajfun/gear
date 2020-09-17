@@ -4,7 +4,8 @@
 	"name": "Gear",
 	"short_name": "SWGOH Gear collection progress",
 	"display": "fullscreen",
-	"start_url": "/gear/",
+	"start_url": "/",
+	"scope" : "gear",
 	"icons": [
 		{
 			"src": "logo-192.png",
