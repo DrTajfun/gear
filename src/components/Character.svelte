@@ -7,6 +7,7 @@
    const todo = await response.json();
 
    if (response.ok) {
+       console.log(todo);
      return todo;
    } else {
        console.log(todo);
