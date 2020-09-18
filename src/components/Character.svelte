@@ -1,18 +1,44 @@
 
 <script>
+
+
+
+
+//https://swgoh.gg/api/characters/1/
+let data2;
+
  let myTodo = getTodo();
 
  async function getTodo() {
-   const response = await fetch("https://swgoh.gg/api/characters/1/");
-   const todo = await response.json();
 
-   if (response.ok) {
-       console.log(todo);
-     return todo;
-   } else {
-       console.log(todo);
-     throw new Error(todo);
-   }
+await fetch('https://swgoh.gg/api/characters/1',  {mode: 'no-cors'}).then(function(response) {
+    console.log(response.headers.get('Content-Type'));
+    console.log(response.headers.get('Date'));
+
+    console.log(response.status);
+    console.log(response.statusText);
+    console.log(response.type);
+    console.log(response.url);
+});
+
+
+  const response = await fetch('https://swgoh.gg/api/characters', {mode: 'no-cors'})
+  .then(function(response) {
+    return response.text();
+  })
+  .then(function(text) {
+    console.log('Request successful', text);
+  })
+  .catch(function(error) {
+    log('Request failed', error)
+  });
+
+    console.log(await response.json());
+    return await response.json()
+
+     
+
+    
  }
 
 </script>
@@ -24,10 +50,10 @@
 
     <p>...waiting</p>
 {:then todo}
-    {@debug myTodo}
-    {#each todo as td}
-    <p>{td.name}</p>
-    {/each}
+    
+    
+    <p>{myTodo}</p>
+    
 {:catch error}
     <p style="color: red">{error.message}</p>
 {/await}
