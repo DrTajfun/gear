@@ -22,7 +22,7 @@ await fetch('https://swgoh.gg/api/characters/1',  {mode: 'no-cors'}).then(functi
 });
 
 
-  const response = await fetch('https://swgoh.gg/api/characters', {mode: 'no-cors'})
+  const response = await fetch('https://swgoh.gg/api/characters', {mode: 'no-cors',  dataType:'jsonp'})
   .then(function(response) {
     return response.text();
   })
