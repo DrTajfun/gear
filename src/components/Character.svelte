@@ -15,7 +15,7 @@ let data2;
 
   const response = await fetch('https://swgoh.gg/api/characters', {mode: 'no-cors',  dataType:'jsonp'})
   .then(function(response) {
-    return response.text();
+    return response.json();
   })
   .then(function(text) {
     console.log('Request successful', text);
@@ -41,7 +41,7 @@ let data2;
 
     <p>...waiting</p>
 {:then todo}
-    
+    {@debug myTodo}
     
     <p>{myTodo}</p>
     
