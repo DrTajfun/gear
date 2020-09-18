@@ -1,4 +1,5 @@
 <script>
+import Character from '../components/Character.svelte';
 let m = { x: 0, y: 0 };
 </script>
 
@@ -58,8 +59,5 @@ let m = { x: 0, y: 0 };
 	The mouse position is {m.x} x {m.y}
 </div>
 
-sasfasfasfasfafa
 
-
-
-twrarrafcdSCDSC
+<Character/>
