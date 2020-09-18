@@ -11,15 +11,6 @@ let data2;
 
  async function getTodo() {
 
-await fetch('https://swgoh.gg/api/characters/1',  {mode: 'no-cors'}).then(function(response) {
-    console.log(response.headers.get('Content-Type'));
-    console.log(response.headers.get('Date'));
-
-    console.log(response.status);
-    console.log(response.statusText);
-    console.log(response.type);
-    console.log(response.url);
-});
 
 
   const response = await fetch('https://swgoh.gg/api/characters', {mode: 'no-cors',  dataType:'jsonp'})
