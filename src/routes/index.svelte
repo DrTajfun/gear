@@ -1,63 +1,42 @@
 <script>
-import Character from '../components/Character.svelte';
-let m = { x: 0, y: 0 };
-</script>
+	import { genericDataUrl, fetchAvatar } from '../shared.js';
+	// The fetchAvatar action is used on the <img> HTMLImageElement
+	//   use:fetchAvatar={ url }
+	//	
+  let disabled = false;
+	let promise = Promise.resolve([]);
+	let genericAvatar = genericDataUrl();
+	
+	async function fetchUsers() {
+		const response = await self.fetch('https://jsonp.afeld.me/?url=https://swgoh.gg/api/characters');
 
-<style>
-	h1, figure, p {
-		text-align: center;
-		margin: 0 auto;
-	}
-
-	h1 {
-		font-size: 2.8em;
-		text-transform: uppercase;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
-	}
-
-	figure {
-		margin: 0 0 1em 0;
-	}
-
-	img {
-		width: 100%;
-		max-width: 400px;
-		margin: 0 0 1em 0;
-	}
-
-	p {
-		margin: 1em auto;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
+		if (response.ok) {
+  		return response.json();
+			
+		} else {
+			throw new Error(users);
 		}
 	}
 
-		div { width: 100%; height: 100%; }
-</style>
+  function handleClick() {
+		// Now set it to the real fetch promise 
+    promise = fetchUsers();
+    disabled = true;
+	}
+</script>
 
+<!-- Stop hitting GitHub on every source edit -->
+<button on:click={ handleClick } { disabled } >
+	Load Users
+</button>
 
-
-
-<svelte:head>
-	<title>My gear collection</title>
-</svelte:head>
-
-<h1>Great success!</h1>
-
-<figure>
-	<img alt='Success Kid' src='successkid.jpg'>
-	<figcaption>Have fun with Sapper!</figcaption>
-</figure>
-
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
-
-<div on:mousemove="{e => m = { x: e.clientX, y: e.clientY }}">
-	The mouse position is {m.x} x {m.y}
-</div>
-
-
-<Character/>
+{#await promise}
+	<p>...waiting</p>
+{:then users}
+  {#each users as {name, image, pk} (pk) }
+    <h3>{name}</h3>
+    <img height="100" src={ 'https://swgoh.gg' + image }	alt={ name } />
+  {/each}
+{:catch error}
+	<p style="color: red">{error.message}</p>
+{/await}

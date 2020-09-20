@@ -2,6 +2,9 @@ import sirv from 'sirv';
 import polka from 'polka';
 import compression from 'compression';
 import * as sapper from '@sapper/server';
+import Api from '@beyonk/sapper-httpclient'
+
+Api.configure({ baseUrl: 'https://swgoh.gg/api/' });
 
 const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === 'development';
